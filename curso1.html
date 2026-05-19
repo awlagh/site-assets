@@ -552,14 +552,13 @@ nav.light .nav-links a:hover { color: var(--ink); }
 nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 nav.light .nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); color: var(--moss); }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   nav { padding: 12px 20px; }
-  .nav-r { gap: 14px; }
-  .nav-r::before { display: none; }
   .nav-logo img { height: 18px; }
-  .nav-links { gap: 16px; }
-  .nav-links li:nth-child(1) { display: none; }
-  .nav-cta { padding: 6px 12px; }
+  .nav-links { display: none; }
+  .nav-r::before { display: none; }
+  .nav-r { gap: 0; }
+  .nav-cta { padding: 8px 14px; font-size: 9px; letter-spacing: 1.5px; }
 }
 
 /* ════════════════════════════════════════════════
@@ -680,27 +679,53 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .hero-title {
   font-family: var(--font-condensed);
   font-weight: 600;
-  font-size: clamp(64px, 11vw, 180px);
+  font-size: clamp(40px, 6.5vw, 108px);
   line-height: .92;
   letter-spacing: -.02em;
   margin: 0;
   color: var(--screen);
+  text-transform: uppercase;
 }
 .hero-title em {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
+  text-transform: none;
   color: var(--moss-bright);
+}
+
+/* Subtítulo del hero (descriptor) */
+.hero-sub {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(11px, 1.2vw, 14px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.55);
+  margin: 18px 0 0;
 }
 
 /* Hero CTA row contenedor */
 .hero-cta-row {
   position: relative; z-index: 2;
-  display: flex; gap: 14px;
-  margin: 40px 0 0;
+  display: flex; gap: 12px;
+  margin: 32px 0 0;
   flex-wrap: wrap;
 }
-.hero-cta-row .btn { width: auto; min-width: 220px; }
+/* Los botones del hero son más contenidos que los de pago */
+.hero-cta-row .btn {
+  font-size: 9px;
+  letter-spacing: 2px;
+  padding: 12px 20px;
+  width: auto;
+  min-width: 0;
+}
+.hero-cta-row .btn .arrow {
+  font-size: 14px;
+}
+.hero-cta-row .btn-flex {
+  gap: 10px;
+}
 
 .hero-bottom {
   position: relative; z-index: 2;
@@ -741,19 +766,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 @media (max-width: 768px) {
   .hero { padding: 90px 24px 40px; }
   .hero-meta-top { gap: 18px; font-size: 10px; flex-wrap: wrap; }
-  
-/* Hero CTA row contenedor */
-.hero-cta-row {
-  position: relative; z-index: 2;
-  display: flex; gap: 14px;
-  margin: 40px 0 0;
-  flex-wrap: wrap;
-}
-.hero-cta-row .btn { width: auto; min-width: 220px; }
-
-.hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .hero-cta-row { width: 100%; }
-  .hero-btn { flex: 1; justify-content: center; padding: 16px 18px; font-size: 12px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-cta-row { width: 100%; gap: 10px; }
+  .hero-cta-row .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 9px; min-width: 0; }
   .hero-schedule { flex-wrap: wrap; gap: 10px; font-size: 12px; line-height: 1.5; }
   .hero-schedule-k { padding-right: 0; border-right: 0; width: 100%; }
 }
@@ -2076,7 +2091,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <span class="bar"></span>
       <span>Especialidad · Creación audiovisual con IA</span>
     </div>
-    <h1 class="cond-xl cond-xl-term" id="hero-title">Del texto<br>a la <em>pieza</em>.</h1>
+    <h1 class="hero-title" id="hero-title">Del texto<br>a la <em>pieza</em>.</h1>
+    <p class="hero-sub">Curso online · Del texto a la pieza.</p>
   </div>
 
   <div class="hero-cta-row">
@@ -2084,7 +2100,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
        class="btn btn-moss btn-lg btn-flex"
        target="_blank" rel="noopener"
        aria-label="Apartar lugar con $1,000 MXN por WhatsApp">
-      <span>Apartar lugar · $1,000 MXN</span>
+      <span>Aparta tu lugar</span>
       <span class="arrow">→</span>
     </a>
     <a href="#manifiesto" class="btn btn-outline-term btn-lg btn-flex">
